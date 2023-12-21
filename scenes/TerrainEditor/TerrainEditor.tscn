@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://la22yc5fmso2"]
+
+[ext_resource type="Script" path="res://scenes/TerrainEditor/scripts/TerrainEditor.gd" id="1_7n12o"]
+[ext_resource type="PackedScene" uid="uid://drwl2g222tmkj" path="res://scenes/TerrainEditor/TerrainMap.tscn" id="2_dgtrw"]
+
+[node name="TerrainEditor" type="Node2D"]
+script = ExtResource("1_7n12o")
+
+[node name="TerrainMap" parent="." instance=ExtResource("2_dgtrw")]
+
+[node name="TerrainUpload" type="FileDialog" parent="."]
+title = "Open File(s)"
+initial_position = 1
+size = Vector2i(500, 400)
+always_on_top = true
+ok_button_text = "Open"
+file_mode = 1
+access = 2
+
+[node name="TerrainExport" type="FileDialog" parent="."]
+title = "Open a Directory"
+initial_position = 1
+size = Vector2i(500, 400)
+ok_button_text = "Select Current Folder"
+file_mode = 2
+access = 1
+
+[node name="TerrainImport" type="FileDialog" parent="."]
+title = "Open a File"
+initial_position = 1
+size = Vector2i(500, 400)
+ok_button_text = "Open"
+file_mode = 0
+access = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+
+[node name="BackButton" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="UploadButton" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "Upload"
+
+[node name="TerrainExportButton" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "Export"
+
+[node name="TerrainImportButton" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "Import"
+
+[connection signal="files_selected" from="TerrainUpload" to="." method="_on_terrain_upload_files_selected"]
+[connection signal="dir_selected" from="TerrainExport" to="." method="_on_terrain_save_dir_selected"]
+[connection signal="file_selected" from="TerrainImport" to="." method="_on_terrain_import_file_selected"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/UploadButton" to="." method="_on_upload_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/TerrainExportButton" to="." method="_on_terrain_export_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/TerrainImportButton" to="." method="_on_terrain_import_button_pressed"]
