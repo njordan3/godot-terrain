@@ -1,5 +1,6 @@
 extends Draggable
 
+
 var image: Image;
 var bitmap: BitMap = BitMap.new();
 var polygons: Array[Polygon2D] = [];

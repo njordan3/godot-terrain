@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0wc6k5f46gbo"]
 
-[ext_resource type="PackedScene" uid="uid://dwq7elmepw15g" path="res://scenes/TerrainEditor/Draggable.tscn" id="1_02vo5"]
+[ext_resource type="PackedScene" uid="uid://bfmh0hnb3mpaj" path="res://scenes/TerrainEditor/Draggable.tscn" id="1_02vo5"]
 [ext_resource type="Script" path="res://scenes/TerrainEditor/scripts/ImageTerrain.gd" id="2_ghfaq"]
 
 [node name="Draggable" instance=ExtResource("1_02vo5")]

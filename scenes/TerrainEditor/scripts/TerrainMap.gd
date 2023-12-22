@@ -20,7 +20,7 @@ func add_terrain(path: String):
 	var image: Image = Image.load_from_file(path);
 	var terrain = imageTerrain.instantiate();
 	terrain.init(image);
-	terrain.on_selected.connect(_on_terrain_selected);
+	terrain.get_node("DraggableFSM").on_selected.connect(_on_terrain_selected);
 	call_deferred("add_child", terrain);
 
 func _on_terrain_selected(terrain):
@@ -44,5 +44,5 @@ func load_terrain_map(terrain_pieces):
 		var terrain = imageTerrain.instantiate();
 		terrain.init(image);
 		terrain.position = terrain_piece["pos"];
-		terrain.on_selected.connect(_on_terrain_selected);
+		terrain.get_node("DraggableFSM").on_selected.connect(_on_terrain_selected);
 		call_deferred("add_child", terrain);
