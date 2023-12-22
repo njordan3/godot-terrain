@@ -10,21 +10,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.3
-anchor_top = 0.2
-anchor_right = 0.7
-anchor_bottom = 0.8
-offset_top = -4.0
-offset_bottom = 4.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -150.0
+offset_right = 100.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TerrainEditorButton" type="Button" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TerrainEditorButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Terrain Editor"
 script = ExtResource("1_65dhp")
 
-[connection signal="button_down" from="VBoxContainer/TerrainEditorButton" to="VBoxContainer/TerrainEditorButton" method="_on_button_down"]
+[connection signal="button_down" from="PanelContainer/VBoxContainer/TerrainEditorButton" to="PanelContainer/VBoxContainer/TerrainEditorButton" method="_on_button_down"]
