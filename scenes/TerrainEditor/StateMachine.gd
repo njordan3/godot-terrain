@@ -38,16 +38,16 @@ func _physics_state_logic(_delta):
 func _get_physics_transition(_delta):
 	return { "state": null, "meta": null };
 
-func _enter_state(_new_state: int, _old_state: int):
+func _enter_state(_new_state, _old_state):
 	pass;
 	
-func _exit_state(_new_state: int, _old_state: int):
+func _exit_state(_new_state, _old_state):
 	pass;
 
-func _allow_set_state(_new_state: int, _old_state: int) -> bool:
+func _allow_set_state(_new_state, _old_state) -> bool:
 	return true;
 
-func set_state(new_state: int, new_meta = null):
+func set_state(new_state, new_meta = null):
 	if _allow_set_state(new_state, state):
 		previous_state = state;
 		state = new_state;

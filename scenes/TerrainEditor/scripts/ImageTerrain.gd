@@ -1,4 +1,5 @@
 extends Draggable
+class_name ImageTerrain
 
 
 var image: Image;

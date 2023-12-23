@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdhrf11ud65fm"]
+
+[ext_resource type="Script" path="res://scenes/TerrainEditor/SelectArea.gd" id="1_atf48"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5eivm"]
+
+[node name="SelectArea" type="Area2D"]
+script = ExtResource("1_atf48")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5eivm")
+
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

@@ -1,7 +1,7 @@
 extends StateMachine
 
 
-signal on_selected(draggable);
+signal on_selected(draggable, new_state_meta);
 
 # The 'selected' and 'dialogue_open' states need an intermediate 'closing' state
 # because they are only supposed to 'close' under specific circumstances.
@@ -32,7 +32,7 @@ func _input(event):
 		if event.button_index == MOUSE_BUTTON_LEFT && !event.pressed:
 			if state == states.dialogue_open:
 				call_deferred("set_state", states.dialogue_close);
-			else:
+			elif state == states.selected:
 				call_deferred("set_state", states.unselected);
 
 func _state_logic(_delta):
@@ -50,7 +50,6 @@ func _state_logic(_delta):
 				var new_position: Vector2 = get_viewport().get_mouse_position();
 				new_position -= state_meta.pos;
 				parent.position = new_position;
-				on_selected.emit(parent);
 			else:
 				call_deferred("set_state", states.idle);
 	
@@ -83,7 +82,8 @@ func _on_draggable_input_event(_viewport, event, _shape_idx):
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			# If overlapping other highlighted terrain, move only the top terrain
 			if is_on_top():
-				call_deferred("set_state", states.selected, { "pos": to_local(event.position) });
+#				call_deferred("set_state", states.selected, { "pos": to_local(event.position) });
+				on_selected.emit(parent, event);
 				event.canceled = true;
 		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			if is_on_top():
